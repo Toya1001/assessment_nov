@@ -23,5 +23,9 @@ class Teacher extends Model
         return $this->hasMany(AssignTeacher::class);
     }
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
 
 }
