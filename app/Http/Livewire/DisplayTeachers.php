@@ -12,10 +12,11 @@ use Livewire\WithPagination;
 
 class DisplayTeachers extends Component
 {
+    use WithPagination;
     public $addTeacher = false;
     public $editTeacher = false;
     public $assignTeacher = false;
-    public $teachername, $email, $password, $class, $subject, $courseId, $teacher;
+    public $teachername, $email, $password, $class, $subject, $courseId, $teacher, $hiddenId;
 
 
     public function teacherAdd()
@@ -25,6 +26,7 @@ class DisplayTeachers extends Component
             'name' => $this->teachername,
             'email' => $this->email,
             'password' => Hash::make($this->password),
+            'role'=> 1
         ]);
 
         $userid = User::where('email', $this->email)->value('id');
@@ -33,7 +35,7 @@ class DisplayTeachers extends Component
             'user_id' => $userid,
         ]);
 
-        return redirect('teacher');
+        return redirect()->route('teacher');
     }
 
     public function teacherEdit($id)
@@ -51,9 +53,10 @@ class DisplayTeachers extends Component
         User::where('id', $userid)->update([
             'name' => $this->teachername,
             'email' => $this->email,
+            'role' => 1,
         ]);
 
-        return redirect('teacher');
+        return redirect()->route('teacher');
     }
 
     public function teacherDelete($id)
@@ -61,29 +64,33 @@ class DisplayTeachers extends Component
         Teacher::where('id', $id)->update([
             'status' => 0,
         ]);
-        return redirect('teacher');
+        return redirect()->route('teacher');
     }
 
     public function addCourse($id)
     {
         $this->assignTeacher = true;
+        $this->hiddenId =$id;
+
+    }
+
+    public function courseAdd(){
         AssignCourse::create([
-            'teacher_id' => $id,
+            'teacher_id' => $this->hiddenId,
             'course_id' => $this->courseId,
         ]);
-        return redirect('teacher');
+        return redirect()->route('teacher');
     }
 
 
     public function render()
     {
         $courses = Course::all();
-        
-        // dd($subjects);
-        $teacher = Teacher::paginate(5);
+        $teachers = Teacher::all();
+        // dd($teacher); 
         return view('livewire.display-teachers', [
             'courses' => $courses,
-            'teacher' => $teacher,
+            'teachers' => $teachers,
         ]);
     }
     

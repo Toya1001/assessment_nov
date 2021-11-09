@@ -46,7 +46,7 @@
             <div class="mt-8">
                 <ul class="space-y-10">
                     <li>
-                        <a href="{{ route('teacher') }}"
+                        <a href="{{ route('student') }}"
                             class="flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="h-6 w-6 mr-4 text-gray-400 hover:text-indigo-600 transition duration-200"
@@ -66,18 +66,6 @@
                                     d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
                             </svg>
                             Teacher</a>
-                    </li>
-                    <li>
-                        <a href=""
-                            class="flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200"
-                            hover:text-indigo-600>
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                class="h-6 w-6 mr-4 text-gray-400 hover:text-indigo-600 transition duration-200"
-                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                            </svg>
-                            Classes</a>
                     </li>
                     <li>
                         <a href="{{ route('course') }}"

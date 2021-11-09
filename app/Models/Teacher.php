@@ -15,7 +15,7 @@ class Teacher extends Model
 
     public function assignCourses()
     {
-        return $this->hasMany(AssignCourse::class);
+        return $this->hasMany(AssignCourse::class,'id', 'teacher_id');
     }
 
     public function assignTeachers()
