@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\AssignCourse;
 use App\Models\Course;
 use App\Models\Schedule;
 use Livewire\Component;
@@ -11,13 +12,13 @@ class DisplaySchedule extends Component
     use WithPagination;
     public $addSchedule = false;
     public $editSchedule = false;
-    public $courseId, $startTime, $endTime, $day;
+    public $assignId, $startTime, $endTime, $day;
 
     public function scheduleAdd(){
    
         // dd($this->courseId);
         Schedule::create([
-            'course_id' => $this->courseId,
+            'assign_course_id' => $this->assignId,
             'day' => $this->day, 
             'start_time' => $this->startTime,
             'end_time'=> $this->endTime
@@ -26,12 +27,14 @@ class DisplaySchedule extends Component
     }
     public function render()
     {
+        $assign= AssignCourse::all();
         $courses = Course::all();
         // dd($courses);
         $schedules = Schedule::paginate(5);
         return view('livewire.display-schedule', [
             'courses' => $courses,
             'schedules' => $schedules,
+            'assign' => $assign,
         ]);
     }
 }

@@ -46,7 +46,7 @@
             <div class="mt-8">
                 <ul class="space-y-10">
                     <li>
-                        <a href="{{ route('student.teacher') }}"
+                        <a href="{{ route('teacher.schedule') }}"
                             class="flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="h-6 w-6 mr-4 text-gray-400 hover:text-indigo-600 transition duration-200"
@@ -54,7 +54,7 @@
                                 <path
                                     d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
                             </svg>
-                            Teacher and Schedule</a>
+                            Schedule</a>
                     </li>
                     
                 </ul>
@@ -69,7 +69,6 @@
                     </svg>
                 </div>
                 <a href="{{ route('logout') }}"
-
                     class="block font-semibold text-gray-500 hover:text-indigo-600 transition duration-200">Logout</a>
             </div>
         </div>

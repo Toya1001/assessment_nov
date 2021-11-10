@@ -114,10 +114,10 @@
                              <thead>
                                  <tr>
                                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                         Course Name
+                                         Teacher Name
                                      </th>
                                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                         Teacher Assigned
+                                         Course Assigned
                                      </th>
 
                                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
@@ -128,20 +128,20 @@
                              </thead>
 
                              <tbody>
-                                 @foreach($teachers as $teacher)
+                                 @foreach($selection as $selection)
 
                                  <tr>
 
                                      <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
-                                         {{$teacher->teacher->user->name }}
+                                         {{$selection->teacher->user->name }}
 
                                      </th>
                                      <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                                         {{ $teacher->course->course_nm }}
+                                         {{-- {{ $selection->teacher->course_nm }} --}}
                                      </td>
 
                                      <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                                         <button wire:click="selectTeacher({{ $teacher->id }})" class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Select</button>
+                                         <button wire:click="selectTeacher()" class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Select</button>
 
                                      </td>
                                  </tr>
@@ -151,7 +151,7 @@
 
                          </table>
                          <div class="my-8 mx-8">
-                             {{ $teachers->links() }}
+                             {{-- {{ $teachers->links() }} --}}
                          </div>
                      </div>
                  </div>

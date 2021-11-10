@@ -10,10 +10,10 @@ class Schedule extends Model
     use HasFactory;
 
     protected $fillable = [
-       'course_id',	'start_time','end_time', 'day',
+       'assign_course_id',	'start_time','end_time', 'day',
     ];
 
-    public function course(){
-      return $this->belongsTo(Course::class);
+    public function assignCourse(){
+      return $this->belongsTo(AssignCourse::class);
     }
 }

@@ -3,11 +3,11 @@
         <div class="flex justify-center items-center bg-blueGray-50">
             <div class="bg-white rounded-lg">
                 <div class="inline-flex rounded-lg">
-                    <button wire:click="$set('schedulelist', true)" type="submit" class="text-center self-center py-2 px-4 rounded-lg cursor-pointer hover:bg-indigo-700 focus:bg-indigo-700"><strong>List Of Students</strong></button>
+                    <button wire:click="$set('schedulelist', true)" type="submit" class="text-center self-center py-2 px-4 rounded-lg cursor-pointer hover:bg-indigo-700 focus:bg-indigo-700"><strong></strong></button>
 
                 </div>
                 <div class="inline-flex rounded-lg">
-                    <button type="submit" wire:click="$set('schedulelist', false)" class="text-center self-center py-2 px-4 rounded-lg cursor-pointer hover:bg-indigo-700 focus:bg-indigo-700"><strong>Students Assigned</strong></button>
+                    <button type="submit" wire:click="$set('schedulelist', false)" class="text-center self-center py-2 px-4 rounded-lg cursor-pointer hover:bg-indigo-700 focus:bg-indigo-700"><strong></strong></button>
 
                 </div>
             </div>
@@ -26,10 +26,10 @@
 
                 <form wire:submit.prevent="scheduleAdd" class="flex flex-col bg-white  p-12">
                     <label class="font-semibold text-xs" for="courseName">Course Name</label>
-                    <select wire:model="courseId" name="courseId"  class="flex items-center h-12 px-4 w-64 bg-gray-200 mt-2 rounded focus:outline-none focus:ring-2">
+                    <select wire:model="assignId" name="assignId"  class="flex items-center h-12 px-4 w-64 bg-gray-200 mt-2 rounded focus:outline-none focus:ring-2">
                        <option value="">Select Course</option>
-                        @foreach($courses as $course)
-                        <option value="{{ $course->id }}">{{ $course->course_nm }}</option>
+                        @foreach($assign as $assign )
+                        <option value="{{ $assign->id }}">{{ $assign->course->course_nm }}-{{ $assign->teacher->user->name }}</option>
                         @endforeach
                     </select>
 
@@ -143,7 +143,7 @@
                                 <tr>
 
                                     <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
-                                    {{ $schedule->course->course_nm }}
+                                    {{ $schedule->assignCourse->course->course_nm }}
                                     </th>
                                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
                                         {{ $schedule->day.' '.$schedule->start_time }}

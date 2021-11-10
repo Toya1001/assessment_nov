@@ -41,15 +41,10 @@ class RegisterLogin extends Component
     {
         $valid = $this->validate();
 
-        if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
-            
-            return redirect()->route('student');
-        } elseif (Auth::attempt(['email' => $this->email, 'password' => $this->password, 'role' => 1])) {
-            return redirect()->route('courses');
-        } elseif (Auth::attempt(['email' => $$this->email, 'password' => $This->password, 'role' => 2])) {
-            return redirect()->route('courses');
+        if (Auth::attempt($valid)) {
+             return redirect('dashboard');
         }
-        
+
         return session()->flash('message', 'Invalid Login');
     }
 

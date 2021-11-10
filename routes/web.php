@@ -19,13 +19,26 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware('dashboardRedirect')->name('dashboard');
 
 require __DIR__.'/auth.php';
 
-Route::view('admin/teacher', 'displayTeacher')->name('teacher')->middleware('admin');
-Route::view('admin/course', 'displayCourses')->name('course')->middleware('admin');
-Route::view('admin/student', 'displayStudent')->name('student')->middleware('admin');
-Route::view('admin/schedule', 'displaySchedule')->name('schedule')->middleware('admin');
+Route::view('register', 'registerlogin')->name('register');
 
-Route::view('student/teacher', 'assignTeacher')->name('student.teacher')->middleware('student');
+Route::group(['middleware'=>'auth'], function(){
+
+    Route::view('admin/teacher', 'displayTeacher')->name('teacher')->middleware('admin');
+    Route::view('admin/course', 'displayCourses')->name('course')->middleware('admin');
+    Route::view('admin/student', 'displayStudent')->name('student')->middleware('admin');
+    Route::view('admin/schedule', 'displaySchedule')->name('schedule')->middleware('admin');
+    
+    Route::view('student/teacher', 'assignTeacher')->name('student.teacher')->middleware('student');
+    
+    Route::view('teacher/schedule', 'showSchedule')->name('teacher.schedule')->middleware('teacher');
+
+});
+
+Route::get('logout', function(){
+    Auth::logout();
+    return redirect('/');
+})->name('logout');

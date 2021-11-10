@@ -18,10 +18,10 @@ class Student
     public function handle(Request $request, Closure $next)
     {
 
-        if (Auth::user() &&  Auth::user()->role == 2) {
-            return $next($request);
+        if ( Auth::user()->role != 2) {
+            return redirect()->route('login');
         }
 
-        return redirect('login')->with('error', 'You have not student access');
+        return $next($request);
     }
 }

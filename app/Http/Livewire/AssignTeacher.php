@@ -31,9 +31,11 @@ class AssignTeacher extends Component
     }
     public function render()
     {
+        $selection = ModelsAssignTeacher::all();
         $teachers =AssignCourse::paginate(5);
         return view('livewire.assign-teacher',[
             'teachers'=>$teachers,
+            'selection'=>$selection,
             ]);
     }
 }
