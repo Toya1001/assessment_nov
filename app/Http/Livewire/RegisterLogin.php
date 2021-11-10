@@ -41,9 +41,15 @@ class RegisterLogin extends Component
     {
         $valid = $this->validate();
 
-        if (Auth::attempt($valid)) {
-            return redirect('teacher');
+        if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
+            
+            return redirect()->route('student');
+        } elseif (Auth::attempt(['email' => $this->email, 'password' => $this->password, 'role' => 1])) {
+            return redirect()->route('courses');
+        } elseif (Auth::attempt(['email' => $$this->email, 'password' => $This->password, 'role' => 2])) {
+            return redirect()->route('courses');
         }
+        
         return session()->flash('message', 'Invalid Login');
     }
 
@@ -54,6 +60,7 @@ class RegisterLogin extends Component
 
     public function registerOnSubmit()
     {
+        // dd($this->teacher);
         
         $this->validate([
             'name' => ['required', 'max:255'],
@@ -65,8 +72,8 @@ class RegisterLogin extends Component
 
 
         if($this->teacher)   {
-            $teacher = User::where('email', $this->email)->count();
-            if ($teacher == 1) {
+            $teacherid = User::where('email', $this->email)->count();
+            if ($teacherid  == 1) {
                 return session()->flash('message', 'An Account already Exist');
             } else {
                 User::create([

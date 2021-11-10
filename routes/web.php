@@ -23,11 +23,9 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::view('admin/teacher', 'displayTeacher')->name('teacher');
-Route::view('admin/course', 'displayCourses')->name('course');
-Route::view('admin/student', 'displayStudent')->name('student');
-Route::view('admin/schedule', 'displaySchedule')->name('schedule');
+Route::view('admin/teacher', 'displayTeacher')->name('teacher')->middleware('admin');
+Route::view('admin/course', 'displayCourses')->name('course')->middleware('admin');
+Route::view('admin/student', 'displayStudent')->name('student')->middleware('admin');
+Route::view('admin/schedule', 'displaySchedule')->name('schedule')->middleware('admin');
 
-Route::view('/register', 'registerlogin')->name('register');
-
-Route::view('/login','registerlogin')->name('login'); 
+Route::view('student/teacher', 'assignTeacher')->name('student.teacher')->middleware('student');
