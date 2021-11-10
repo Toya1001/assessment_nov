@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,8 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::view('register', 'registerlogin')->name('register');
+
+Route::view('login', 'registerlogin')->name('login');
 
 Route::group(['middleware'=>'auth'], function(){
 

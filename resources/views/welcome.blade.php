@@ -71,7 +71,7 @@
                         adipiscing elit tincidunt cras sociis, parturient enim montes.</p>
                 </div>
     
-                <a href="{{ route('login') }}"
+                <a href="{{ route('register') }}"
                     class="block bg-indigo-500 hover:bg-indigo-400 py-2 px-4 rounded-full text-sm font-mitr text-white uppercase mt-10">Get
                     started</a>
             </div>

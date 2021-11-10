@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\AssignCourse;
 use App\Models\AssignTeacher as ModelsAssignTeacher;
+use App\Models\Schedule;
 use App\Models\Student;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -14,13 +15,14 @@ class AssignTeacher extends Component
     public $selectTeacher =false;
 
     public function selectTeacher($id){
+        // dd($id);
         $course = AssignCourse::find($id);
         $studentId = Student::where('user_id', auth()->user()->id)->value('id'); 
         $check = ModelsAssignTeacher::where('student_id', $studentId)
         ->where('teacher_id', $course->teacher_id )
         ->count(); 
         if($check == 1){
-            return 'Already selected teacher';
+            session()->flash('message', 'Already selected teacher');
         }else{
         ModelsAssignTeacher::create([
             'student_id' => $studentId,
@@ -31,7 +33,7 @@ class AssignTeacher extends Component
     }
     public function render()
     {
-        $selection = ModelsAssignTeacher::all();
+        $selection = Schedule::all();
         $teachers =AssignCourse::paginate(5);
         return view('livewire.assign-teacher',[
             'teachers'=>$teachers,

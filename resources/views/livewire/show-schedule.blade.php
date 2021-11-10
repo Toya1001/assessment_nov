@@ -40,9 +40,9 @@
                                 </th>
 
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                                     {{-- @foreach ( $schedule->course as $classtime )
-                                    {{ $class->day.' '.$class->start_time. ' '. $class->end_time }}
-                                    @endforeach --}}
+                                     @foreach ( $schedule->schedules as $classtime )
+                                    {{ $classtime->day.' '.$classtime->start_time. '-'. $classtime->end_time }}
+                                    @endforeach
 
 
 
