@@ -15,6 +15,7 @@ use Livewire\WithPagination;
 class DisplayStudent extends Component
 {
     use WithPagination;
+    public $studentlist = false;
     public $addStudent = false;
     public $editStudent = false;
     public $assignStudent = false;
@@ -28,7 +29,7 @@ class DisplayStudent extends Component
             'name' => $this->studentname,
             'email' => $this->email,
             'password' => Hash::make($this->password),
-            'role' => 1
+            'role' => 2
         ]);
 
         $userid = User::where('email', $this->email)->value('id');
@@ -55,7 +56,7 @@ class DisplayStudent extends Component
         User::where('id', $userid)->update([
             'name' => $this->studentname,
             'email' => $this->email,
-            'role' => 1,
+            'role' => 2,
         ]);
 
         return redirect()->route('student');
@@ -88,8 +89,10 @@ class DisplayStudent extends Component
     {
         $teachers = Teacher::all();
         $students = Student:: paginate(5); 
+        $assigned = AssignTeacher::paginate(5);
         return view('livewire.display-student', [
             'teachers' => $teachers,
-            'students'=> $students ]);
+            'students'=> $students,
+            'assigned' => $assigned ]);
     }
 }

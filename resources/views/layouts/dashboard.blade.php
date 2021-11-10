@@ -81,7 +81,7 @@
                             Course</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{ route('schedule') }}"
                             class="flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200"
                             hover:text-indigo-600>
                             <svg xmlns="http://www.w3.org/2000/svg"

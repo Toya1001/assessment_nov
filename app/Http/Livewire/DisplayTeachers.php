@@ -13,6 +13,7 @@ use Livewire\WithPagination;
 class DisplayTeachers extends Component
 {
     use WithPagination;
+    public $teacherslist = false; 
     public $addTeacher = false;
     public $editTeacher = false;
     public $assignTeacher = false;
@@ -86,11 +87,13 @@ class DisplayTeachers extends Component
     public function render()
     {
         $courses = Course::all();
-        $teachers = Teacher::all();
+        $teachers = Teacher::paginate(5);
         // dd($teacher); 
+        $assign = AssignCourse::paginate(5);
         return view('livewire.display-teachers', [
             'courses' => $courses,
             'teachers' => $teachers,
+            'assign'=> $assign,
         ]);
     }
     
