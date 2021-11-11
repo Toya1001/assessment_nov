@@ -13,29 +13,6 @@
      </div>
 
 
-     @if($chooseTeacher)
-
-     <!-- component -->
-     <div class="fixed z-10 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
-         <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-             <div class="flex items-center  h-8 w-8 rounded-full left-0">
-                 <button wire:click="$set('chooseTeacher', false)"><i class="fas fa-times"></i></button>
-             </div>
-             <h3 class="font-semibold text-md text-center text-blueGray-700">Add Course</h3>
-
-             <form wire:submit.prevent="courseAdd" class="flex flex-col bg-white  p-12">
-                 <label class="font-semibold text-xs" for="usernameField">Course Name</label>
-                 <input wire:model="course" class="flex items-center h-12 px-4 w-64 bg-gray-200 mt-2 rounded focus:outline-none focus:ring-2" type="text">
-                 <button class="flex items-center justify-center h-12 px-6 w-64 bg-blue-600 mt-8 rounded font-semibold text-sm text-blue-100 hover:bg-blue-700">Add</button>
-             </form>
-             <!-- Component End  -->
-
-         </div>
-     </div>
-
-     @endif
-
-
      @if($selectTeacher)
      <div>
          <section class="py-1 bg-blueGray-50">
@@ -88,7 +65,7 @@
                                      </td>
 
                                      <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                                         <button wire:click="$set('chooseTeacher, true')" class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Select</button>
+                                         <button wire:click="selectTeacher({{ $teacher->id }})" class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Select</button>
 
                                      </td>
                                  </tr>
