@@ -40,7 +40,16 @@
                     </svg>
                 </div>
                 <div>
-                    <p class="text-lg text-white font-semibold">Dashboard</p>
+                    <p class="text-lg text-white font-semibold">
+                        @if( auth()->user()->role == 0)
+                        ADMIN
+                        @elseif(auth()->user()->role == 1)
+                        TEACHER
+                        @else
+                        STUDENT
+                        @endif
+
+                    </p>
                 </div>
             </div>
             <div class="mt-8">

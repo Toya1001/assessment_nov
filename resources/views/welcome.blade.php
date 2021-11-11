@@ -21,7 +21,7 @@
             <nav class="container mx-auto px-6 md:px-12 py-4" x-data="{ open: false }">
                 <div class="md:flex justify-between items-center">
                     <div class="flex justify-between items-center">
-                        <a href="#" class="text-white">
+                        <a href="{{ url('/') }}" class="text-white">
                             <svg class="w-6 mr-2 fill-current" xmlns="http://www.w3.org/2000/svg" data-name="Capa 1"
                                 viewBox="0 0 16.16 12.57">
                                 <defs />

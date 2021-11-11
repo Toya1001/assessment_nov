@@ -64,28 +64,6 @@ class RegisterLogin extends Component
             'password_confirmation' => ['min:6',],
         ]);
 
-
-
-        if($this->teacher)   {
-            $teacherid = User::where('email', $this->email)->count();
-            if ($teacherid  == 1) {
-                return session()->flash('message', 'An Account already Exist');
-            } else {
-                User::create([
-                    'name' => $this->name,
-                    'email' => $this->email,
-                    'password' => Hash::make($this->password),
-                    'role' => 1,
-                ]);
-
-                $userid = User::where('email', $this->email)->value('id');
-                Teacher::create([
-                    'user_id'=> $userid,
-                ]);
-                return redirect()->route('login');
-            }
-        } elseif ($this->student){
-
             $user = User::where('email', $this->email)->count();
             if ($user == 1) {
                 return session()->flash('message', 'An Account already Exist');
@@ -105,7 +83,6 @@ class RegisterLogin extends Component
                 return redirect()->route('login');
             }
         }
-    }
 
     public function render()
     {

@@ -40,7 +40,15 @@
                     </svg>
                 </div>
                 <div>
-                    <p class="text-lg text-white font-semibold">Dashboard</p>
+                    <p class="text-lg text-white font-semibold">
+                        @if( auth()->user()->role == 0) 
+                        ADMIN
+                        @elseif(auth()->user()->role == 1)
+                        TEACHER
+                        @else
+                        STUDENT
+                        @endif
+                    </p>
                 </div>
             </div>
             <div class="mt-8">
@@ -94,17 +102,6 @@
                     </li>
                     <li>
                         <a href="#"
-                            class="flex items-centerx text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                class="h-6 w-6 mr-4 text-gray-400 hover:text-indigo-600 transition duration-200"
-                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            Payouts</a>
-                    </li>
-                    <li>
-                        <a href="#"
                             class="flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200"
                             hover:text-indigo-600>
                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +116,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="flex mt-20 space-x-4 items-center">
+            <div class="flex mt-10 space-x-4 items-center">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg"
                         class="h-6 w-6 text-gray-400 hover:text-indigo-600 transition duration-200" fill="none"

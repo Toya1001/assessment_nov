@@ -13,6 +13,7 @@ class AssignTeacher extends Component
 {
     use WithPagination;
     public $selectTeacher =false;
+    public $chooseTeacher = false;
 
     public function selectTeacher($id){
         // dd($id);
